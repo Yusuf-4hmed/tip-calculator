@@ -20,10 +20,19 @@ document.querySelectorAll('.tip').forEach( tip => {
     console.log(tip.dataset.value)
     percentageTip = Number(tip.dataset.value)
     calculateTable()
+    document.querySelectorAll('.tip').forEach( tip => {tip.classList.remove("active")
+    })
+    customTip.classList.remove("active")
+    customTip.value = 0
+    tip.classList.toggle("active")
    }) 
+   
 })
 
 customTip.addEventListener("input", () => {
+    
+    customTip.classList.add("active")
+    document.querySelectorAll('.tip').forEach( tip => {tip.classList.remove("active")})
     percentageTip = customTip.value;
     calculateTable()
 })
@@ -39,4 +48,6 @@ const enforceNumberOnly = (e) => {
 
 priceInput.addEventListener('input', enforceNumberOnly)
 customTip.addEventListener('input', enforceNumberOnly)
+
+
 
